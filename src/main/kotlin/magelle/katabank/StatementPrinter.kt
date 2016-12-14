@@ -4,10 +4,20 @@ import java.text.DecimalFormat
 import java.util.concurrent.atomic.AtomicInteger
 
 class StatementPrinter(val console: Console) {
+
     private val numberFormat = "#.00"
     private val numberFormater = DecimalFormat(numberFormat)
+
     fun print(operations: List<Operation>) {
+        printHeader()
+        printOperations(operations)
+    }
+
+    private fun printHeader() {
         console.println("| date | credit | debit | balance |")
+    }
+
+    private fun printOperations(operations: List<Operation>) {
         val balance = AtomicInteger(0)
         operations.map { operationToLine(balance, it) }
                 .reversed()

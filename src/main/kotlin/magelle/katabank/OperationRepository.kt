@@ -15,8 +15,6 @@ class OperationRepository(val clock: Clock) {
         operations.add(Operation(clock.todayAsString(), -amount))
     }
 
-    fun allOperations(): List<Operation> {
-        return unmodifiableList(operations)
-    }
+    fun allOperations(): List<Operation> = unmodifiableList(operations)
 
 }
